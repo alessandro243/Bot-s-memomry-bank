@@ -82,7 +82,8 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 
 > &nbsp;  
 > &nbsp;&nbsp;&nbsp;<b>condição:</b> Variável decisiva para a escolha de frases do bot;  
-> &nbsp;&nbsp;&nbsp;<b>valor:</b> Define o valor que afetará o humor de Mingau, a ação e seu valor serão adicionados a tabela &nbsp;&nbsp;&nbsp; eventos e essa será usada no cálculo de humor ao fim da interação.  
+> &nbsp;&nbsp;&nbsp;<b>valor:</b> Define o valor que afetará o humor de Mingau, a ação e seu valor serão adicionados a tabela  
+>&nbsp;&nbsp;&nbsp;eventos e essa será usada no cálculo de humor ao fim da interação.  
 >  
 > Dessa forma, a partir do uso do comando !mingau, a operação passa a seguir o seguinte rumo:  
 > 1 - Consuta a entidade Mingau para pegar informações como cômodo, número de interações e humor, que começa como neutro. Por exemplo, se o humor do mingau for 0 (neutro), buscaremos ações com condição zero e null, caso seja 1 (positivo) buscaremos ações com condição > 0 e null e se for -1 (negativo), buscaremos ações de condição < 0. Ações com condição null podem acontecer em quaisquer estados de humor.  
