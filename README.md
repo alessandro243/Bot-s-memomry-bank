@@ -65,8 +65,8 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 
 >Nessa tabela mingau guarda informações importantes para a narrativa, como:  
 >&nbsp;&nbsp;&nbsp;<b>id_do_bot:</b> Pode ser usado para gerenciar permissões nos canais;  
->&nbsp;&nbsp;&nbsp;<b>último_cômodo:</b> Para o bot saber em qual cômodo ele esteve pela última vez, gerar mensagens de saída e &nbsp;&nbsp;&nbsp;continuar em caso de reiniciamento do bot;  
->&nbsp;&nbsp;&nbsp;<b>último_cômodo:</b> Para o bot saber em qual área ele esteve pela última vez, gerar mensagens de saída e &nbsp;&nbsp;&nbsp;continuar em caso de reiniciamento do bot;  
+>&nbsp;&nbsp;&nbsp;<b>id_último_cômodo:</b> Para o bot saber em qual cômodo ele esteve pela última vez, gerar mensagens de saída e &nbsp;&nbsp;&nbsp;continuar em caso de reiniciamento do bot;  
+>&nbsp;&nbsp;&nbsp;<b>id_última_área:</b> Para o bot saber em qual área ele esteve pela última vez, gerar mensagens de saída e &nbsp;&nbsp;&nbsp;continuar em caso de reiniciamento do bot;  
 >&nbsp;&nbsp;&nbsp;<b>humor:</b> Essa variável inteira será usada para determinar quais ações podem ser selecionadas da tabela de &nbsp;&nbsp;&nbsp;ações;  
 >&nbsp;&nbsp;&nbsp;<b>interações:</b> Variável usada para calcular o momento em que mingau mudará de cômodo ou área;  
 >&nbsp;&nbsp;&nbsp;<b>usuário_preferido:</b> Indica qual é o usuário por quem Mingau tem mais afinidade.  
@@ -91,7 +91,7 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 >  
 > Dessa forma, a partir do uso do comando !mingau, a operação passa a seguir o seguinte rumo:  
 >  
-> 1 - Consulta a entidade Mingau para pegar informações como cômodo, número de interações e humor, que começa como neutro. Por exemplo, se o humor do Mingau for 0 (neutro), buscaremos ações com condição igual a zero ou NULL; caso seja 1 (positivo), buscaremos ações com condição > 0 ou NULL; e se for -1 (negativo), buscaremos ações com condição < 0 ou NULL. Ações com condição NULL podem ocorrer em quaisquer estados de humor.  
+> 1 - Consulta a entidade Mingau para pegar informações como cômodo, área, número de interações e humor, que começa como neutro. Por exemplo, se o humor do Mingau for 0 (neutro), buscaremos ações com condição igual a zero ou NULL; caso seja 1 (positivo), buscaremos ações com condição > 0 ou NULL; e se for -1 (negativo), buscaremos ações com condição < 0 ou NULL. Ações com condição NULL podem ocorrer em quaisquer estados de humor.  
 > 2 - Em seguida, verificamos a tabela de frases, selecionando as que condizem com sua área e estado de humor.  
 > 3 - Selecionamos aleatoriamente uma frase, salvando o texto e o valor que ela agrega ao estado de humor. Esse valor vem da coluna "valor" da tabela de ações, de onde tiramos o número que será somado ao humor de Mingau. Assim, se a frase tiver um valor positivo, o humor de Mingau ficará mais elevado.  
 > 4 - Emitimos o texto da mensagem no canal e atualizamos o humor de Mingau. O humor é calculado com base na coluna "efeito_humor" da tabela de eventos. Nessa tabela, registramos as ações que já foram executadas e como elas afetam o humor. Com base na coluna "efeito_humor", fazemos o somatório e atualizamos o estado de humor ao final de cada ação.  
