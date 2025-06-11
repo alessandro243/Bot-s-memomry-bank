@@ -34,12 +34,14 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   <tr>
     <td><img src="imagens\tab_mingau.png" width=500>
     </td>
-    <td>
-    </td>
   </tr>
 </table>
 
-> e mostramos as tabelas que compõe essa memória virtual.  
+> Nessa tabela mingau guarda informações importantes para a narrativa, como:  
+>><b>id_do_bot:</b> Pode ser usado para gerenciar permissões nos canais;  
+><b>último_cômodo:</b> Para o bot saber em qual cômodo ele esteve pela última vez, gerar mensagens de saída e continuar em caso de reiniciamento do bot;  
+><b>humor:</b> Essa variável inteira será usada para determinar quais frasas podem ser selecionadas da tabela de frases;  ><b>interações:</b> Variáveis para calcular o momento em que mingau mudará de cômodo ou lugar;  
+><b>usuário_preferido:</b> Indica qual é o  usuário por quem Mingau tem mais afinidade.  
 
 </details>
 <hr>
