@@ -23,8 +23,15 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 
 <details>
   <summary>Planejamento da memória do Mingau</summary>
-  <section>sdawdad</section>
+  <br>
+
+  > Aqui discorremos acerca do planejamento da memória do Mingau  
+  > e mostramos as tabelas que compõe essa memória virtual.  
+
 </details>
 <details>
   <summary>Planejamento da memória do Cordano</summary>
+  
+  > Aqui discorremos acerca do planejamento da memória do Cordano  
+  > e mostramos as tabelas que compõe essa memória virtual.  
 </details>
