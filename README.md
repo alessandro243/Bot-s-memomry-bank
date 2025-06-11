@@ -64,9 +64,19 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 >&nbsp;&nbsp;&nbsp;<b>humor:</b> Essa variável inteira será usada para determinar quais frasas podem ser selecionadas da tabela de &nbsp;&nbsp;&nbsp;frases;  
 >&nbsp;&nbsp;&nbsp;<b>interações:</b> Variáveis para calcular o momento em que mingau mudará de cômodo ou lugar;  
 >&nbsp;&nbsp;&nbsp;<b>usuário_preferido:</b> Indica qual é o  usuário por quem Mingau tem mais afinidade.  
-<hr>
 
-> Através da tabela de cômodos, Mingau poderá transitar de um cômodo ao outro emitindo mensagens de transição e atualização seu estado de último cômodo:
+> Através da tabela de cômodos, Mingau tomará ciência de por quais cômodos poderá transitar, emitindo mensagens de transição e atualização seu estado de último cômodo.  
+> A segunda entidade será uma tabela de ações que Mingau poderá executar, ela guardará frases categrizadas por humor e por área, assim quando o comando !mingau for acionado, ele poderá fazer as verificações e tomar ações de acordo com seu humor e localização do cômodo no qual ele se encontra:
+
+<table align="center">
+    <td align="center">
+    Entidade ação
+    </td>
+  <tr>
+    <td><img src="imagens\tab_frase.png" width=500>
+    </td>
+  </tr>
+</table>
 
 </details>
 <hr>
