@@ -1,4 +1,4 @@
-<h1 align='center'><b>Extesão do projeto república: Implementação de memória em banco de dados</b></h1>
+<h1 align='center' style ="font-size: 18px"><b>Extesão do projeto república: Implementação de memória em banco de dados</b></h1>
 
 Como bem vimos, os cômodos de nossa república comunicam-se através de arquivos de texto, isso funciona bem com as consultas, que na maior parte das vezes são rápidas e simples, usando apenas um dado simples, como dia, segundos ou um dado booleano. Só que isso não serve para estruturas de dados mais complexos, extensos e não uniformes, como listas de dicionarios grandes, o que da forma que fazemos atualmente, é um problema quando consideramos desenvolver uma memória consistente para um NPC, pois não é escalável e não oferece segurança nos dados.
 
@@ -25,13 +25,26 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   <summary>Planejamento da memória do Mingau</summary>
   <br>
 
-  > Aqui discorremos acerca do planejamento da memória do Mingau  
-  > e mostramos as tabelas que compõe essa memória virtual.  
+> O desenvolvimento de uma memória em banco para o Mingau o tornará mais flexível abrindo novas possibilidades para o bot, pois poderá guardar informações de forma mais consistente, organizada e resume a programação hardcoded. Para substituír o sistema de arquivos .txt usaremos uma série de tabelas que relacionam cômodos, áreas, frases do bot e eventos que podem ocorrer. Pra começar temos a própria entidade Mingau, que é organizada da seguinte forma:  
+
+<table align="center">
+    <td align="center">
+    Entidade Mingau
+    </td>
+  <tr>
+    <td><img src="imagens\tab_mingau.png" width=500>
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+
+> e mostramos as tabelas que compõe essa memória virtual.  
 
 </details>
+<hr>
+
 <details>
-  <summary>Planejamento da memória do Cordano</summary>
-  
-  > Aqui discorremos acerca do planejamento da memória do Cordano  
-  > e mostramos as tabelas que compõe essa memória virtual.  
+  <summary>Planejamento da memória do Cordano</summary> 
 </details>
+<hr>
