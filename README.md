@@ -39,8 +39,8 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 
 >Nessa tabela mingau guarda informações importantes para a narrativa, como:  
 >&nbsp;&nbsp;&nbsp;<b>id_do_bot:</b> Pode ser usado para gerenciar permissões nos canais;  
->&nbsp;&nbsp;&nbsp;<b>último_cômodo:</b> Para o bot saber em qual cômodo ele esteve pela última vez, gerar mensagens de saída e continuar em caso de reiniciamento do bot;  
->&nbsp;&nbsp;&nbsp;<b>humor:</b> Essa variável inteira será usada para determinar quais frasas podem ser selecionadas da tabela de frases;  
+>&nbsp;&nbsp;&nbsp;<b>último_cômodo:</b> Para o bot saber em qual cômodo ele esteve pela última vez, gerar mensagens de saída e &nbsp;&nbsp;&nbsp;continuar em caso de reiniciamento do bot;  
+>&nbsp;&nbsp;&nbsp;<b>humor:</b> Essa variável inteira será usada para determinar quais frasas podem ser selecionadas da tabela de &nbsp;&nbsp;&nbsp;frases;  
 >&nbsp;&nbsp;&nbsp;<b>interações:</b> Variáveis para calcular o momento em que mingau mudará de cômodo ou lugar;  
 >&nbsp;&nbsp;&nbsp;<b>usuário_preferido:</b> Indica qual é o  usuário por quem Mingau tem mais afinidade.  
 
