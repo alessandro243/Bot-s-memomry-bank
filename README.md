@@ -7,6 +7,27 @@ Mas isso passa a não funcionar tão bem quando consideramos um numero grande de
 
 Dessa forma nós planejamos implementar uma rede de tabelas para cada bot, estabelecendo uma memória robusta e persistente e com suporte a várias conexões para cada personagem. Então ao entrar no servidor pela primeira vez o usuário será recepcionado por um bot administrativo, que o fará perguntas para otmizar a experiência do usuário, perguntas como nome, estilo de música preferido. Ele então registrará as informações na tabela de usuários com um inventário para itens, dessa forma os bots poderão acessar esse inventario para gerenciar suas próprias frases e ações.
 
+Primeiramente, teremos uma tabela de cômodos, com a qual todos os bots tomarão ciência dos cômodos existentes na república e também uma tabela de áreas, representando partes dos cômodos. A princípio, a tabela de áreas é mais usada pelo nosso mascote Mingau, mas, assim como a de cômodos poderá ser usada por todos os bots:
+
+<table align='center'>
+    <td align='center'>
+    Entidade Cômodo
+    </td>
+    </td>
+    <td>
+    <td align='center'>
+    Entidade Área
+    </td>
+  <tr>
+    <td><img src="imagens\tab_cômodos.png" width=250>
+    </td>
+    <td width=200>
+    </td>
+    <td><img src="imagens\tab_area.png" width=300>
+    </td>
+  </tr>
+</table>
+
 <hr>
 
 ### ⚙️ Tecnologias que serão utilizadas 
@@ -43,6 +64,9 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 >&nbsp;&nbsp;&nbsp;<b>humor:</b> Essa variável inteira será usada para determinar quais frasas podem ser selecionadas da tabela de &nbsp;&nbsp;&nbsp;frases;  
 >&nbsp;&nbsp;&nbsp;<b>interações:</b> Variáveis para calcular o momento em que mingau mudará de cômodo ou lugar;  
 >&nbsp;&nbsp;&nbsp;<b>usuário_preferido:</b> Indica qual é o  usuário por quem Mingau tem mais afinidade.  
+<hr>
+
+> Através da tabela de cômodos, Mingau poderá transitar de um cômodo ao outro emitindo mensagens de transição e atualização seu estado de último cômodo:
 
 </details>
 <hr>
