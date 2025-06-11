@@ -46,7 +46,8 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   <summary>Planejamento da memória do Mingau</summary>
   <br>
 
-> O desenvolvimento de uma memória em banco para o Mingau o tornará mais flexível abrindo novas possibilidades para o bot, pois poderá guardar informações de forma mais consistente, organizada e resume a programação hardcoded. Para substituír o sistema de arquivos .txt usaremos uma série de tabelas que relacionam cômodos, áreas, frases do bot e eventos que podem ocorrer. Pra começar temos a própria entidade Mingau, que é organizada da seguinte forma:  
+> O desenvolvimento de uma memória em banco para o Mingau o tornará a dinâmica mais flexível abrindo novas possibilidades para o bot, pois poderá guardar informações de forma mais consistente, organizada e resumirá a programação hardcoded. Para substituír o sistema de arquivos .txt usaremos uma série de tabelas que relacionam cômodos, áreas, frases do bot e eventos que podem ocorrer. Pra começar temos a própria entidade Mingau, que é organizada da seguinte forma:  
+> &nbsp;  
 
 <table align="center">
     <td align="center">
@@ -64,9 +65,10 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 >&nbsp;&nbsp;&nbsp;<b>humor:</b> Essa variável inteira será usada para determinar quais frasas podem ser selecionadas da tabela de &nbsp;&nbsp;&nbsp;frases;  
 >&nbsp;&nbsp;&nbsp;<b>interações:</b> Variáveis para calcular o momento em que mingau mudará de cômodo ou lugar;  
 >&nbsp;&nbsp;&nbsp;<b>usuário_preferido:</b> Indica qual é o  usuário por quem Mingau tem mais afinidade.  
-
+>  
 > Através da tabela de cômodos, Mingau tomará ciência de por quais cômodos poderá transitar, emitindo mensagens de transição e atualização seu estado de último cômodo.  
-> A segunda entidade será uma tabela de ações que Mingau poderá executar, ela guardará frases categrizadas por humor e por área, assim quando o comando !mingau for acionado, ele poderá fazer as verificações e tomar ações de acordo com seu humor e localização do cômodo no qual ele se encontra:
+> A segunda entidade será uma tabela de ações que Mingau poderá executar, ela guardará frases categrizadas por humor e por área, assim quando o comando !mingau for acionado, ele poderá fazer as verificações e tomar ações de acordo com seu humor e localização do cômodo no qual ele se encontra:  
+> &nbsp;  
 
 <table align="center">
     <td align="center">
@@ -77,6 +79,19 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     </td>
   </tr>
 </table>
+
+> &nbsp;  
+> &nbsp;&nbsp;&nbsp;<b>condição:</b> Variável decisiva para a escolha de frases do bot;  
+> &nbsp;&nbsp;&nbsp;<b>valor:</b> Define o valor que afetará o humor de Mingau, a ação e seu valor serão adicionados a tabela eventos e essa será usada no cálculo de humor ao fim da interação.  
+>  
+> Dessa forma, a partir do uso do comando !mingau, a operação passa a seguir o seguinte rumo:  
+> 1 - Consuta a entidade Mingau para pegar informações como cômodo, número de interações e humor, que começa como neutro. Por exemplo, se o humor do mingau for 0 (neutro), buscaremos ações com condição zero e null, caso seja 1 (positivo) buscaremos ações com condição > 0 e null e se for -1 (negativo), buscaremos ações de condição < 0. Ações com condição null podem acontecer em quaisquer estados de humor.  
+> 2 - Então verificamos a tabela de frases, selecionando as que condizem com sua área e o estado de humor.  
+> 3 - Selecionamos aleatoriamente uma salvando o texto e o valor que ele agrega ao estado de humor. Da coluna valor da tabela ações, que é de onde tiramos as possíveis ações de Mingau, desse coluna nós tiramos tiramos o número que vamos agregar ao humor do mingau. Então, se a frase tem um valor positivo, o humor de Mingau ficará mais alto.  
+> 4 - Emitimos o texto da mensagem no canal e atualizamos o humor do mingau. O humor de Mingau é calculado com base na coluna "efeito humor" da tabela evento, nessa tabela registramos as ações que já foram executadas e como elas afetariam o humor. Com base nessa coluna efeito humor fazemos o somatório e atualizamos o estado de humor ao final de cada ação.  
+> 5 - Agora mingau estará pronto para o próximo comando.  
+>  
+>  
 
 </details>
 <hr>
