@@ -42,8 +42,43 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 <hr>
 
 <details>
-  <summary>Planejamento de cadastro de usuários</summary> 
+  <summary>Planejamento de cadastro de usuários</summary>
+  <br>
+
+> Uma lógica de interação entre bots e usuários por meio de análise das tabelas abre várias possibilidades em termos de escalabilidade, porém, para a dinâmica não ficar comprometida, ainda é preciso otimizar a questão do registro de novos usuários. Como já vimos, o registro do usuário acontece quando ele fala com o Cordano, então antes disso ele não terá nenhum registro ou inventário, não podendo assim pegar quaisquer itens. A ideia é transferir a responsabilidade de registro dos usuários de Cordano para a administração, com quem ele interagirá assim que chegar.  
+> &nbsp;  
+> Quando um novo user conectar-se ao servidor,ele ou ela será recepcionado por Milka, que fará uma breve pesquisa colhendo dados que ela usará no registro. Após o pequeno questionário, Milka adicionará o user ao registro de membros do servidor da seguinte forma:
+> &nbsp;  
+> &nbsp;  
+
+<table align="center">
+    <td align="center">
+    Entidade user
+    </td>
+  <tr>
+    <td><img src="imagens\tab_users.png" width=400>
+    </td>
+  </tr>
+</table>
+
+> Com base nas respostas do usuário, Milka escreverá seu ritmo preferido e sua afinidade com Mingau, na maior parte dos casos começa como zero.Logo depois ela adicionará um item ao inventário no ID da pessoa, segue um exemplo da entidade inventário:
+> &nbsp;  
+> &nbsp;  
+
+<table align="center">
+    <td align="center">
+    Entidade inventário
+    </td>
+  <tr>
+    <td><img src="imagens\tab_inventario.png" width=300>
+    </td>
+  </tr>
+</table>
 </details>
+
+
+</details>
+
 <hr>
 
 <details>
