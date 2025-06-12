@@ -45,10 +45,9 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   <summary>Planejamento de cadastro de usuários</summary>
   <br>
 
-> Uma lógica de interação entre bots e usuários por meio de análise das tabelas abre várias possibilidades em termos de escalabilidade, porém, para a dinâmica não ficar comprometida, ainda é preciso otimizar a questão do registro de novos usuários. Como já vimos, o registro do usuário acontece quando ele fala com o Cordano, então antes disso ele não terá nenhum registro ou inventário, não podendo assim pegar quaisquer itens. A ideia é transferir a responsabilidade de registro dos usuários de Cordano para a administração, com quem ele interagirá assim que chegar.  
+> Uma lógica de interação entre bots e usuários por meio da análise das tabelas abre várias possibilidades em termos de escalabilidade. Porém, para que a dinâmica não fique comprometida, ainda é preciso otimizar a questão do registro de novos usuários. Como já vimos, o registro do usuário acontece quando ele fala com o Cordano, então, antes disso, ele não terá nenhum registro ou inventário, não podendo, assim, pegar quaisquer itens. A ideia é transferir a responsabilidade do registro dos usuários do Cordano para a administração, com quem ele interagirá assim que chegar.  
 > &nbsp;  
-> Quando um novo user conectar-se ao servidor,ele ou ela será recepcionado por Milka, que fará uma breve pesquisa colhendo dados que ela usará no registro. Após o pequeno questionário, Milka adicionará o user ao registro de membros do servidor da seguinte forma:
-> &nbsp;  
+> Quando um novo user se conectar ao servidor, ele ou ela será recepcionado por Milka, que fará uma breve pesquisa colhendo dados que usará no registro. Após o pequeno questionário, Milka adicionará o user ao registro de membros do servidor da seguinte forma:  
 > &nbsp;  
 
 <table align="center">
@@ -61,9 +60,8 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   </tr>
 </table>
 
-> Com base nas respostas do usuário, Milka escreverá seu ritmo preferido e sua afinidade com Mingau, na maior parte dos casos começa como zero.Logo depois ela adicionará um item ao inventário no ID da pessoa, segue um exemplo da entidade inventário:
-> &nbsp;  
-> &nbsp;  
+> Com base nas respostas do usuário, Milka escreverá seu ritmo preferido e sua afinidade com Mingau, que na maioria dos casos começa em zero. Logo depois, ela adicionará um item ao inventário no ID da pessoa. Segue um exemplo da entidade Inventário:  
+> &nbsp;    
 
 <table align="center">
     <td align="center">
@@ -74,6 +72,32 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     </td>
   </tr>
 </table>
+
+> Através do ID dos itens dispostos na tabela Inventário, os bots poderão acessar a tabela Item para ver as descrições ou a tabela Associação para verificar sua interação com eles, caso precisem considerá-los antes da execução de um evento pontual. Ao encontrar o item que procura para executar determinado evento, o bot então o executa e muda a área com seu nome para null. Dessa forma, ele não interagirá mais com esse item, perdendo essa linha de diálogo com esse usuário.  
+> &nbsp;  
+
+<table align='center'>
+    <td align='center'>
+    Entidade item
+    </td>
+    </td>
+    <td>
+    <td align='center'>
+    Entidade associação
+    </td>
+  <tr>
+    <td><img src="imagens\tab_item.png" width=400>
+    </td>
+    <td width=200>
+    </td>
+    <td><img src="imagens\tab_associação.png" width=200>
+    </td>
+  </tr>
+</table>
+
+> Observe que o que aconteceu aqui foi que Milka adicionou um novo usuário chamado Wandie Soul. Ele respondeu que seu ritmo de música preferido é J-pop, mas é importante lembrar que representamos assim para melhor entendimento, e que não será adicionado com o nome do ritmo, e sim pelo ID do item cd_jpop, que está como 2. Através desse ID, vemos que Milka adicionou dois itens ao inventário no ID de Wandie Soul: a ração seca, em 3 unidades, e um CD de J-pop, em uma unidade.  
+> &nbsp;  
+
 </details>
 
 
@@ -151,6 +175,11 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 > Mingau também terá dois novos comandos: !alimentar e !brincar. Esses comandos adicionarão à tabela de eventos um registro com um efeito_humor positivo, afetando o humor de Mingau. Além disso, eles acrescentarão pontos a um contador chamado pontos_mingau, localizado na tabela do próprio usuário. No início do próximo dia, Mingau atualizará sua afinidade com o usuário com base nesse contador.  
 > &nbsp;  
 > 
+</details>
+<hr>
+
+<details>
+  <summary>Ação e memória da Milka</summary> 
 </details>
 <hr>
 
