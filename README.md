@@ -1,5 +1,6 @@
-<h1 align='center' style ="font-size: 18px"><b>Extensão do Projeto República: Implementação de Memória em Banco de Dados</b></h1>
+<h1 align='center'><b>Extensão da Cyber-República: Implementação de Memória em Banco de Dados</b></h1>
 
+<br>
 Como bem vimos, os cômodos de nossa república comunicam-se através de arquivos de texto. Isso funciona bem com as consultas, que na maior parte das vezes são rápidas e simples, usando apenas um dado simples, como dia, segundos ou um dado booleano. Só que isso não serve para estruturas de dados mais complexas, extensas e não uniformes, como listas de dicionários grandes, o que, da forma que fazemos atualmente, é um problema quando consideramos desenvolver uma memória consistente para um NPC, pois não é escalável e não oferece segurança nos dados.
 
 Do modo que está, você só passa a ter algum tipo de registro em memória a partir do momento em que fala com o Cordano no bar. Ele então adiciona você a um registro de usuários em um arquivo .json. Nesse arquivo haverá informações como nome do usuário, se você está interagindo pela primeira vez e sua lista de itens. A ideia era que cada bot usasse esse .json, onde teria, para cada item do usuário, uma lista de bots que interagem com esse item e, após a interação, ele apagaria seu nome dessa lista, inutilizando determinada linha de diálogo.
@@ -19,15 +20,15 @@ Primeiramente, teremos uma tabela de cômodos, com a qual todos os bots tomarão
     Entidade Área
     </td>
   <tr>
-    <td><img src="imagens\tab_cômodos.png" width=250>
+    <td><img src="imagens\tab_cômodos.png" width=200>
     </td>
     <td width=200>
     </td>
-    <td><img src="imagens\tab_area.png" width=300>
+    <td><img src="imagens\tab_area.png" width=250>
     </td>
   </tr>
 </table>
-
+<br>
 <hr>
 
 ### ⚙️ Tecnologias que serão utilizadas 
@@ -39,6 +40,8 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 * [pymysql:](https://pymysql.readthedocs.io/en/latest/) API utilizada para integrar o MySQL ao projeto.
 * [sqlalchemy:](https://www.sqlalchemy.org/) API utilizada para integrar o MySQL ao projeto.
 * [DBeaver:](https://dbeaver.io/) Programa utilizado para melhor visualização dos dados nas tabelas.
+<br>
+<br>
 <hr>
 
 <details>
@@ -68,7 +71,7 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     Entidade inventário
     </td>
   <tr>
-    <td><img src="imagens\tab_inventario.png" width=300>
+    <td><img src="imagens\tab_inventario.png" width=250>
     </td>
   </tr>
 </table>
@@ -88,18 +91,28 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   <tr>
     <td><img src="imagens\tab_item.png" width=400>
     </td>
-    <td width=200>
+    <td width=10>
     </td>
-    <td><img src="imagens\tab_associação.png" width=200>
+    <td><img src="imagens\tab_associação.png" width=150>
     </td>
   </tr>
 </table>
 
-> Observe que o que aconteceu aqui foi que Milka adicionou um novo usuário chamado Wandie Soul. Ele respondeu que seu ritmo de música preferido é J-pop, mas é importante lembrar que representamos assim para melhor entendimento, e que não será adicionado com o nome do ritmo, e sim pelo ID do item cd_jpop, que está como 2. Através desse ID, vemos que Milka adicionou dois itens ao inventário no ID de Wandie Soul: a ração seca, em 3 unidades, e um CD de J-pop, em uma unidade.  
+> Observe que o que aconteceu aqui foi que Milka adicionou um novo usuário chamado Wandie Soul. Ele respondeu que seu ritmo de música preferido é J-pop, mas é relevante lembrar que representamos assim para melhor entendimento, e que não será adicionado com o nome do ritmo, e sim pelo ID do item cd_jpop, que está como 2. Através desse ID, vemos que Milka adicionou dois itens ao inventário no ID de Wandie Soul: a ração seca, em 3 unidades, e um CD de J-pop, em uma unidade. Então de dependendo da resposta, Milka adicionará um cd conforme os ritmos dispostos na tabela de ritmos:
 > &nbsp;  
 
-</details>
+<table align="center">
+    <td align="center">
+    Entidade ritmo
+    </td>
+  <tr>
+    <td><img src="imagens\tab_musics.png" width=150>
+    </td>
+  </tr>
+</table>
 
+> Importante lembrar, na hora da criação da tabela de rirmos que Milka usará os ritmos não deverão ter ids automáticos, pois para que tudo funcione corretamente, o ID do ritmo que constará na tabela deverá condizer com o ID do item cd do respectivo estilo musical na tabela item. Assim, quando Milka selecionar o estilo, poderá adicionar o item correto ao inventário no id do usuário.
+> &nbsp;  
 
 </details>
 
@@ -109,7 +122,8 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   <summary>Planejamento da memória do Mingau</summary>
   <br>
 
-> O desenvolvimento de uma memória em banco para o Mingau tornará a dinâmica mais flexível, abrindo novas possibilidades para o bot, pois ele poderá guardar informações de forma mais consistente e organizada, além de reduzir a programação hardcoded. Para substituir o sistema de arquivos .txt, usaremos uma série de tabelas que relacionam cômodos, áreas, frases do bot e eventos que podem ocorrer. Para começar, temos a própria entidade Mingau, que é organizada da seguinte forma:  
+> Para fins de exemplo, usaremos aqui o bot mingau, descrevendo como ele funcionará, mas o exposto será basicamente a dinâmica de funcionamento dos bots de ação aleatória, de modo geral.  
+>O desenvolvimento de uma memória em banco para o Mingau tornará a dinâmica mais flexível, abrindo novas possibilidades para o bot, pois ele poderá guardar informações de forma mais consistente e organizada, além de reduzir a programação hardcoded. Para substituir o sistema de arquivos .txt, usaremos uma série de tabelas que relacionam cômodos, áreas, frases do bot e eventos que podem ocorrer. Para começar, temos a própria entidade Mingau, que é organizada da seguinte forma:  
 > &nbsp;  
 
 <table align="center">
@@ -165,7 +179,7 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     Entidade evento
     </td>
   <tr>
-    <td><img src="imagens\tab_evento.png" width=300>
+    <td><img src="imagens\tab_evento.png" width=250>
     </td>
   </tr>
 </table>
@@ -179,15 +193,10 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
 <hr>
 
 <details>
-  <summary>Ação e memória da Milka</summary> 
-</details>
-<hr>
-
-<details>
   <summary>Planejamento da memória do Cordano</summary> 
   <br>
 
-> Nessa configuração, Cordano não verificará mais um arquivo .json, agora, para decidir como responder, o bot consulta a tabela interação, analisando se existe e a interação entre o bot e o usuário. Existindo, Cordano saberá que não é a primeira interação e que não cabe um cumprimento. Essa entidade interação guarda os integrantes da interação a partir do momento em que ela acontece, no momento, planejamos guardar somente a data, mas talvez usemos o horário para uma segunda interação customizada. Ela será limpa ao virar do dia para garantir que os cumprimentos aconteçam devidamente.  
+> Nessa configuração, Cordano não verificará mais um arquivo .json. Agora, para decidir como responder, o bot consulta a tabela interação, analisando se existe uma interação entre o bot e o usuário. Caso exista, Cordano saberá que não é a primeira interação e que não cabe um cumprimento. A entidade interação guarda os integrantes da interação a partir do momento em que ela acontece. No momento, planejamos guardar somente a data, mas talvez usemos o horário para uma segunda interação customizada. Essa tabela será limpa ao virar do dia para garantir que os cumprimentos aconteçam devidamente.  
 > &nbsp;  
 >  
 
@@ -196,12 +205,14 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     Entidade interação
     </td>
   <tr>
-    <td><img src="imagens\tab_interação.png" width=400>
+    <td><img src="imagens\tab_interação.png" width=300>
     </td>
   </tr>
 </table>  
 
-> Da mesma forma Cordano também passa a verificar a tabela inventário e a outra tabela associação antes de executar uma linha de diálogo, fazendo a consulta ele analisa se o usuário tem um item com o qual o bot se relacione, caso não tenha, ele segue sua linha de dialogo normal. Se houver um item no invetário registrado no nome do usuário e que tenha uma relação com o bot, ele executa uma fala especial e depois muda o estado da interação com item que está no id do usuário na tabela associação. Como funciona:  
+> Da mesma forma, Cordano também passa a verificar a tabela inventário e a tabela associação antes de executar uma linha de diálogo. Ao fazer essa consulta, ele analisa se o usuário possui algum item com o qual o bot tenha relação; caso não tenha, segue sua linha de diálogo normal.  
+>Se houver um item no inventário registrado no nome do usuário que tenha uma relação com o bot, ele executa uma fala especial e depois muda o estado da interação para o item correspondente ao ID do usuário na tabela associação.  
+>Como funciona:  
 > &nbsp;  
 >  
 
@@ -222,13 +233,20 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     <td align="center">
     Entidade inventário
     </td>
+    <td width=10>
+    </td>
+    <td align="center">
+    Entidade item
+    </td>
   <tr>
-    <td><img src="imagens\tab_inventario.png" width=300>
+    <td><img src="imagens\tab_inventario2.png" width=250>
+    <td><img width=10>
+    <td><img src="imagens\tab_item2.png" width=450>
     </td>
   </tr>
 </table>  
 
-> Aqui observamos dois itens na posse do usuário Wandie Soul e a partir disso podemos usar o id dos itens para verificar se o bot tem uma interação especial com o item na tabela associação. Agora um exemplo da entidade associação antes e depois da interação especial:  
+> Aqui observamos dois itens na posse do usuário Wandie Soul, a partir disso podemos usar o id dos itens para verificar se o bot tem uma interação especial com o item, na tabela associação. Agora um exemplo da entidade associação antes e depois da interação especial:  
 > &nbsp;  
 >  
 
@@ -243,19 +261,70 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     </td>
   <tr>
     <td><img src="imagens\tab_associação_True.png" width=300></td>
-    <td width=300></td>
+    <td width=10></td>
     <td><img src="imagens\tab_associação_False.png" width=300></td>
     </td>
   </tr>
-    <td align="center" width=400>
+    <td align="center" width=300>
     Antes da interação especial, temos associação como verdadeira.
     </td>
-    <td align="center" width=500>
+    <td align="center" width=10>
     </td>
-    <td align="center" width=400>
+    <td align="cente" width=300>
     Após a interação especial, temos associação como falsa.
     </td>
 </table>  
 
+> Acerca das linhas de diálogo padrão de Cordano, fizemos uma entidade unicamente para as falas do NPC, nela temos diversas frases que ele usará em determinadas ocasiões. A tabela organiza as frases por bloco, então incialmente o personagem usará, como frases padrão, as que pertencem ao bloco 1. Para saber de qual bloco ele deve pegar suas frases padrão Cordano verificará a própria entidade Cordano, nela encontrará essa informação na coluna bloco_frase, o bloco que está escrito nessa tabela mudará conforme o avanço da narrativa e para controlar isso, não só Cordano, mas todos os personagens terão acesso à uma tabela de eventos globais, que lista com condição de verdadeiro ou falso para que saibam o que já aconteceu. Esse estado muda conforme os usuários interagem com a narrativa. Um exemplo de como funcionará essa dinâmica de narrativa e das tabelas envolvidas:  
+> &nbsp;  
+>  
+
+<table align="center">
+    <td align="center">
+    Entidade interação
+    </td>
+    <td width=10></td>
+    <td align="center">
+    Entidade fala_cordano
+    </td>
+    <td width=10></td>
+    <td align="center">
+    Entidade evento
+    </td>
+  <tr>
+    <td><img src="imagens\tab_cordano2.png" width=400>
+    </td>
+    <td width=10></td>
+    <td><img src="imagens\tab_frases_cordano2.png" width=600>
+    </td>
+    <td width=10></td>
+    <td><img src="imagens\tab_global_events.png" width=600>
+    </td>
+  </tr>
+</table>  
+
+
+> Aqui perceba que, inicialmente no bloco 1, Cordano está procurando por Milka e ele continuará repetindo esse conjundo de frases até que alguém encontre-a e diga isso, após essa interação o envento 2 em tab_evento terá seu estado mudado para True, o slot de diálogo de cordano mudará para 2 e ele usará novas linhas.  
+>Perceba que aqui nós usamos o bot Cordano como exemplo, mas toda essa é a lógica aqui disposta é, de modo geral,como funcionarão os outros personagens/NPCs de ação não aleatória que comporão a totalidade da experiência.  
+> &nbsp;  
+>  
+
 </details>
+
 <hr>
+
+<br>
+<br>
+
+<div align="center" width=700>
+<p>
+
+<p align="center">
+<b>Sobre a idealização do projeto e seus objetivos na questão social</b>
+</p>
+
+Esse é o projeto de uma experiência multiplayer, de uma narrativa viva que se vive e se constroi em tempo real. Um dia pode ser um lugar tranquilo para quem só quer aproveitar uma boa vibe da ambientação, sem compromisso ou propósito. Mas também pode ser uma forma de se envolver em uma dinâmica gameficada viva que interage com você. A Cyber-república nasce de dois projetos reais. Um coletivo, que contando a narrativa de uma história, assume uma estética cyber-punk. Uma forma de expressar uma arte que não poderia ser transposta hoje, considerando toda a infra-estrutura envolvida no desenvolvimento de um jogo 3D dessa proporção. A engine que é o Discord foi para nós o ambiente perfeito para isso florescer porque já tem sistema de segurança, servidor, cadastro e comunicação entrincada.
+Ela nasce, também, da sensação de que as redes sociais convencionais não são capazes de criar relações sociais verdadeiras e valorosas,estimulando pessoas a somar amigos em conversas rápidas com pessoas com as quais você raramente fala, mas chama de amigos. Nesse sentido, fundamos nosso lar, para ter um ambiente onde a conversa não é o objetivo, mas surge expontaneamente da sensação de estar em um ambiente acolhedor e imersivo sercado de pessoas que não sabem quem você é, mas foram capazes de sentir por esse lugar a mesma energia que você sentiu e tiveram a sensibilidade necessária para dar vida a algo que só existe em dois sentidos.
+Como projeto de portifólio de um estudante, esse cantinho vai continuar crescendo enquanto eu puder aprender algo novo.
+</p>
+</div>
