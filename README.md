@@ -201,7 +201,7 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
   </tr>
 </table>  
 
-> Da mesma forma Cordano também passa a verificar a tabela inventário e a outra tabela item antes de executar uma linha de diálogo, fazendo a consulta ele analisa se o usuário tem um item com o qual o bot se relacione, caso não tenha, ele segue sua linha de dialogo normal. Se houver um item no invetário registrado no nome do usuário e que tenha uma relação com o bot, ele executa uma fala especial e depois muda o estado da interação com item que está no id do usuário na tabela associação. Como funciona:  
+> Da mesma forma Cordano também passa a verificar a tabela inventário e a outra tabela associação antes de executar uma linha de diálogo, fazendo a consulta ele analisa se o usuário tem um item com o qual o bot se relacione, caso não tenha, ele segue sua linha de dialogo normal. Se houver um item no invetário registrado no nome do usuário e que tenha uma relação com o bot, ele executa uma fala especial e depois muda o estado da interação com item que está no id do usuário na tabela associação. Como funciona:  
 > &nbsp;  
 >  
 
@@ -214,7 +214,7 @@ Linguagens, ferramentas e bibliotecas utilizadas no desenvolvimento do projeto:
     </td>
   </tr>
   <td align="center" width=500>
-    Considerando uma interação entre o usuário Wandie Soul e Cordan, podemos verificar na entidade inventário quais itens estão em posse desse usuário através do ID_user.
+    Considerando uma interação entre o usuário Wandie Soul e Cordano, podemos verificar na entidade inventário quais itens estão em posse desse usuário através do ID_user.
     </td>
 </table>  
 
